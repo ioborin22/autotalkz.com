@@ -1,0 +1,54 @@
+#AddHandler application/x-httpd-php73 .php
+#AddHandler application/x-httpd-php .php .htm .html
+
+#php_value short_open_tag 1
+
+ErrorDocument 401 /
+ErrorDocument 403 /
+ErrorDocument 404 /404.php
+ErrorDocument 500 /
+
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www\.autotalkz\.com$ [NC]
+RewriteRule ^(.*)$ https://autotalkz.com/$1 [R=301,L]
+RewriteBase /
+
+# sticky index.php
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+RewriteRule ^index\.php$ https://autotalkz.com/ [R=301,L]
+
+RewriteRule ^404/$ /404.php
+
+RewriteRule ^lang-([-a-zA-Z]+)/$ /index.php?lang=$1
+
+RewriteRule ^sitemap.xml sitemap.php [L]
+
+RewriteRule ^page-([-0-9]+)/$ /index.php?page=$1
+RewriteRule ^lang-([-a-zA-Z]+)/page-([-0-9]+)/$ /index.php?lang=1&page=$2
+
+RewriteRule ^alf-([-a-zA-Z]+)/$ /index.php?bukva=$1
+RewriteRule ^alf-([-a-zA-Z]+)/page-([-0-9]+)/$ /index.php?bukva=$1&page=$2
+RewriteRule ^lang-([-a-zA-Z]+)/alf-([-a-zA-Z]+)/$ /index.php?lang=$1&bukva=$2
+RewriteRule ^lang-([-a-zA-Z]+)/alf-([-a-zA-Z]+)/page-([-0-9]+)/$ /index.php?lang=$1&bukva=$2&page=3
+
+RewriteRule ^cat-([-a-zA-Z]+)/$ /index.php?cat=$1
+RewriteRule ^cat-([-a-zA-Z]+)/page-([-0-9]+)/$ /index.php?cat=$1&page=$2
+RewriteRule ^lang-([-a-zA-Z]+)/cat-([-a-zA-Z0-9]+)/$ /index.php?lang=$1&cat=$2
+RewriteRule ^lang-([-a-zA-Z]+)/cat-([-a-zA-Z0-9]+)/page-([-0-9]+)/$ /index.php?lang=$1&cat=$2&page=3
+
+RewriteRule ^lang-([-a-zA-Z]+)/cat-([-a-zA-Z0-9]+)/$ /index.php?lang=$1&cat=$2&page=3
+
+RewriteRule ^cat-([-a-zA-Z0-9]+)/([-a-zA-Z0-9]+)/$ /index.php?cat=$1&stat=$2
+RewriteRule ^lang-([-a-zA-Z]+)/cat-([-a-zA-Z0-9]+)/([-a-zA-Z0-9]+)/$ /index.php?lang=$1&cat=$2&stat=$3
+
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_URI} !(.*)/$ 
+RewriteRule ^(.*)$ /$1/ [R=301,L]
+
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?google.com [NC]
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?bing.com [NC]
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?yahoo.com [NC]
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?autotalkz.com/ [NC]
+RewriteRule \.(jpg|jpeg|png|gif)$ – [NC,F,L]
