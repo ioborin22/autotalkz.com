@@ -1,6 +1,6 @@
 # AutoTalkz
 
-![Site Description](https://autotalkz.com/path/to/image.jpg)
+![Site Description](https://autotalkz.com/images/main.jpg)
 
 AutoTalkz is a platform dedicated to automotive topics. Here you can find useful articles, tips for car maintenance, and discuss current issues with other car owners.
 
