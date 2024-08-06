@@ -3,7 +3,14 @@
 		<div class="right">
 			<h3>Other languiges:</h3>
 			<?php echo $lang_page; ?>
-			<a target="_blank" href="https://getwab.com/register"><figure><img height="150" src="https://ruogp.me/getwab.gif" alt="GETWAB free dating and chat" ><figcaption>GETWAB.COM Free Dating</figcaption></figure></a>
+			
+			<a target="_blank" href="https://getwab.com?utm_source=autotalkz&utm_medium=referral&utm_campaign=link_from_autotalkz">
+				<figure>
+					<img height="150" src="https://ruogp.me/getwab.gif" alt="GETWAB free dating and chat">
+					<figcaption>GETWAB.COM Free Dating</figcaption>
+				</figure>
+			</a>
+
 			<h3>Select category:</h3>
 				<div class="right_menu">
                     <?php echo $cats; ?>
