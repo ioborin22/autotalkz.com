@@ -35,3 +35,6 @@ jobs:
           script: |
             # Restart web server if needed
             sudo systemctl restart apache2
+            # Remove .git and .github directories
+            sudo rm -rf /var/www/html/autotalkz.com/.git
+            sudo rm -rf /var/www/html/autotalkz.com/.github

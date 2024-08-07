@@ -16,5 +16,3 @@ function replacment($search, $replace, $text, $c){
     $result = substr_replace($result,'', $pos, $pos + 3);
     return $result;
 }
-
-?>
