@@ -7,6 +7,26 @@
      crossorigin="anonymous"></script>
 <!-- Ad END -->
 </head>
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const trackingData = {
+                url: window.location.href,
+                referrer: document.referrer,
+                timestamp: new Date().toISOString(),
+                title: document.title,
+                screenResolution: `${window.screen.width}x${window.screen.height}`,
+                userAgent: navigator.userAgent,
+                language: navigator.language || navigator.userLanguage
+                };
+            fetch('/track', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(trackingData)
+            });
+        });
+    </script>
 <body>
 <header itemscope itemtype="http://schema.org/WPHeader" id="header">
 	<div class="shapka">

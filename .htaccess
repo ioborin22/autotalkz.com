@@ -52,3 +52,6 @@ RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?bing.com [NC]
 RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?yahoo.com [NC]
 RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?autotalkz.com/ [NC]
 RewriteRule \.(jpg|jpeg|png|gif)$ – [NC,F,L]
+
+
+RewriteRule ^track/?$ track.php [L]

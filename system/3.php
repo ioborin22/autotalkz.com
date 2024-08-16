@@ -13,18 +13,29 @@
 	<div class="cl"></div>
 </div>
 </section>
-<footer itemscope itemtype="http://schema.org/WPFooter" id="footer">
-	<div class="footer">
-		<div class="footer_vn">
-			<div class="copy">
-				&copy; <?php echo date("Y"); ?> autotalkz.com, all right reserved. Languages: <?php echo $lang_page; ?>
-			</div>
-			<div class="fss">
-			</div>
-			<div class="cl"></div>
-		</div>
-	</div>
+<footer id="footer" itemscope itemtype="http://schema.org/WPFooter">
+    <div class="footer">
+        <div class="footer_vn">
+            <div class="footer_column">
+                <div class="site_description">
+                    AutoTalkz is your ultimate source for detailed reviews and histories of cars from around the world. Explore specifications, photos, and more!
+                </div>
+            </div>
+            <div class="footer_column">
+                <div class="footer_languages">
+                    Languages: <?php echo $lang_page; ?>
+                </div>
+            </div>
+            <div class="footer_column">
+                <div class="copy">
+                    &copy; <?php echo date("Y"); ?> autotalkz.com, all rights reserved.
+                </div>
+            </div>
+            <div class="cl"></div>
+        </div>
+    </div>
 </footer>
+
 
 <div id="cookieConsent">
             <div id="closeCookieConsent">×</div>
@@ -129,16 +140,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 </body>
 </html>
-<!-- Google tag (gtag.js) START -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SEVVRFEESC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SEVVRFEESC');
-</script>
-<!-- Google tag (gtag.js) END -->
 <script>
 document.addEventListener("copy", function(e) {
     const selection = window.getSelection().toString();
