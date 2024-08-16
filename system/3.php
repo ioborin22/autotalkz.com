@@ -88,7 +88,6 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     const consentCookie = getCookie("acceptCookies");
-    console.log(consentCookie);
 
     if (consentCookie) {
         document.getElementById("cookieConsent").style.display = "none";
