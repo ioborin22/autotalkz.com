@@ -55,3 +55,18 @@ RewriteRule \.(jpg|jpeg|png|gif)$ – [NC,F,L]
 
 
 RewriteRule ^track/?$ track.php [L]
+
+RewriteRule ^about-us/?$ /pages/about-us.php [L]
+RewriteRule ^lang-([-a-zA-Z]+)/about-us/?$ /pages/about-us.php?lang=$1 [L]
+
+RewriteRule ^terms-of-service/?$ /pages/terms-of-service.php [L]
+RewriteRule ^lang-([-a-zA-Z]+)/terms-of-service/?$ /pages/terms-of-service.php?lang=$1 [L]
+
+RewriteRule ^privacy-policy/?$ /pages/privacy-policy.php [L]
+RewriteRule ^lang-([-a-zA-Z]+)/privacy-policy/?$ /pages/privacy-policy.php?lang=$1 [L]
+
+RewriteRule ^cookie-policy/?$ /pages/cookie-policy.php [L]
+RewriteRule ^lang-([-a-zA-Z]+)/cookie-policy/?$ /pages/cookie-policy.php?lang=$1 [L]
+
+RewriteRule ^disclaimer/?$ /pages/disclaimer.php [L]
+RewriteRule ^lang-([-a-zA-Z]+)/disclaimer/?$ /pages/disclaimer.php?lang=$1 [L]

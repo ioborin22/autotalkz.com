@@ -248,45 +248,45 @@ class main{
         return $vivcar;
     }
 
-    public function getLang(){
+public function getLang(){
+    $flag = $this->flags;
 
-        $flag = $this->flags;
+    global $database;
+    $this->getUrlnav();
 
-        global $database;
-        $this->getUrlnav();
+    $lang_this = $this->lang;
+    $urlnav = $this->urlnav;
 
-        $lang_this = $this->lang;
-        $urlnav = $this->urlnav;
+    // Получаем текущий путь страницы
+    $currentUrl = $_SERVER['REQUEST_URI'];
 
-        $mylang = '';
-if (isset($urlnav) && $urlnav !== null && stristr($urlnav, '/lang-')) {
-    $mylang = explode('/', $urlnav);
-    unset($mylang[1]);
-    $mylang = implode('/', $mylang);
-} else {
-    $mylang = $urlnav;
+    // Убираем существующий языковой префикс из URL, если он есть
+    $currentUrl = preg_replace('/\/lang-[a-z]{2}/', '', $currentUrl);
+
+    $langs = '';
+    $alternate = '';
+
+    $zap = $database->query("select * from lang");
+    $lang = [];
+    while($res = $zap->fetch_assoc()){
+        if($res['name'] !== 'eng'){
+            $lang[$res['name']] = $res['name'];
+        }
+    }
+
+    foreach ($lang as $la) {
+        // Добавляем новый язык в URL
+        $translatedUrl = "/lang-$la" . $currentUrl;
+
+        $langs .= '<a class="footer_lang" href="'.$translatedUrl.'">'.$flag[$la].$la.'</a>';
+        $alternate .= '<link rel="alternate" hreflang="'.$la.'" href="https://autotalkz.com'.$translatedUrl.'">'."\n";
+    }
+
+    // Ссылка для английского языка без языкового префикса
+    $this->viv_lang = '<a class="footer_lang" href="'.$currentUrl.'">🇬🇧eng</a>'.$langs;
+    $this->alternate = $alternate;
 }
 
-        $zap = $database->query("select * from lang");
-        $lang = [];
-        while($res = $zap->fetch_assoc()){
-            if($res['name'] !== 'eng'){
-                $lang[$res['name']] = $res['name'];
-            }
-        }
-
-        $langs = '';
-        $alternate = '';
-
-        foreach ($lang as $la) {
-            $langs .= '<a class="footer_lang" href="/lang-'.$la.$mylang.'">'.$flag[$la].$la.'</a>';
-            $alternate .= '<link rel="alternate" hreflang="'.$la.'" href="https://autotalkz.com/lang-'.$la.$mylang.'">'."\n";
-        }
-
-        $this->viv_lang = '<a class="footer_lang" href="'.$mylang.'">🇬🇧eng</a>'.$langs;
-        $this->alternate = $alternate;
-
-    }
 
     public function getStat(){
         $page = $this->page;

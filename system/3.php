@@ -13,12 +13,35 @@
 	<div class="cl"></div>
 </div>
 </section>
+<?php
+$lang_map = [
+    'eng' => 'en',
+    'de' => 'de',
+    'fr' => 'fr',
+    'es' => 'es',
+    'it' => 'it',
+    'pt' => 'pt'
+];
+
+$google_lang = isset($lang_map[$main->lang]) ? $lang_map[$main->lang] : 'en';
+?>
+
 <footer id="footer" itemscope itemtype="http://schema.org/WPFooter">
     <div class="footer">
         <div class="footer_vn">
             <div class="footer_column">
                 <div class="site_description">
                     AutoTalkz is your ultimate source for detailed reviews and histories of cars from around the world. Explore specifications, photos, and more!
+                </div>
+                <div class="footer_links">
+                    <a href="/about-us/">About Us</a> |
+                    <a href="/privacy-policy/">Privacy Policy</a> |
+                    <a href="/cookie-policy/">Cookie Policy</a> |
+                    <a href="/terms-of-service/">Terms of Service</a> |
+                    <a href="/disclaimer/">Disclaimer</a> |
+                    <a href="https://policies.google.com/privacy?hl=<?php echo $google_lang; ?>" target="_blank">Google Privacy Policy</a> |
+                    <a href="https://support.google.com/analytics/answer/6004245?hl=<?php echo $google_lang; ?>" target="_blank">Google Analytics</a> |
+                    <a href="https://support.google.com/adsense/answer/1348695?hl=<?php echo $google_lang; ?>" target="_blank">Google AdSense</a>
                 </div>
             </div>
             <div class="footer_column">
@@ -35,6 +58,7 @@
         </div>
     </div>
 </footer>
+
 
 
 <div id="cookieConsent">
