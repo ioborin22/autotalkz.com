@@ -9,19 +9,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 function sendToGoogleAnalytics($trackingId, $clientId, $url, $referrer, $timestamp) {
-    $url = 'https://www.google-analytics.com/collect?' . http_build_query([
+    $encodedUrl = urlencode($url);
+    $encodedReferrer = urlencode($referrer);
+    $encodedTimestamp = urlencode($timestamp);
+
+     $gaUrl = 'https://www.google-analytics.com/collect?' . http_build_query([
         'v' => '1',
         'tid' => $trackingId,
         'cid' => $clientId,
         't' => 'pageview',
-        'dp' => $url,
-        'dr' => $referrer,
-        'qt' => $timestamp
+        'dp' => $encodedUrl,
+        'dr' => $encodedReferrer,
+        'qt' => $encodedTimestamp
     ]);
 
-    $response = file_get_contents($url);
+    $response = file_get_contents($gaUrl);
     
     if ($response === FALSE) {
-         error_log('Google Analytics request failed');
+        error_log('Google Analytics request failed');
     }
 }
