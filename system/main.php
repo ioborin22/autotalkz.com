@@ -77,4 +77,3 @@ $alternate = $main->alternate;
 
 $lang = $main->lang;
 if($lang == 'eng'){$lang = 'en';}
-?>
