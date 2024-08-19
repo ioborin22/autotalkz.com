@@ -54,8 +54,6 @@ RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?autotalkz.com/ [NC]
 RewriteRule \.(jpg|jpeg|png|gif)$ – [NC,F,L]
 
 
-RewriteRule ^track/?$ track.php [L]
-
 RewriteRule ^about-us/?$ /pages/about-us.php [L]
 RewriteRule ^lang-([-a-zA-Z]+)/about-us/?$ /pages/about-us.php?lang=$1 [L]
 

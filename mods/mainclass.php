@@ -1,5 +1,18 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT']."/admin/func.php";
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+#phpinfo();
+
+#if (class_exists('Redis')) {
+#    echo "Redis class is available!";
+#} else {
+#    echo "Redis class is not available.";
+#}
+
+
+require_once '/var/www/html/autotalkz.com/admin/func.php';
 
 class main{
 
@@ -193,7 +206,11 @@ class main{
         $flag['it'] = '🇮🇹';
         $flag['pt'] = '🇵🇹';
         $this->flags = $flag;
+
+        
     }
+
+    // add all articals into Redis
 
     public function setLang($data){$this->lang = $data;}
     public function setPage($data){$this->page = $data;}
@@ -430,6 +447,25 @@ public function getLang(){
 
         $flag = $this->flags;
 
+        $redis = new Redis();
+        $redis->connect('127.0.0.1', 6379);
+        $redis_key = 'statya_' . $this->statya . '_' . $this->lang;
+
+        if ($redis->exists($redis_key)) {
+        $cachedData = $redis->get($redis_key);
+        $cachedData = unserialize($cachedData);
+
+        $this->text = $cachedData['text'];
+        $this->cat_title = $cachedData['cat_title'];
+        $this->statya_title = $cachedData['statya_title'];
+        $this->statya_other_id = $cachedData['statya_other_id'];
+        $this->page_img = $cachedData['page_img'];
+        $this->viv_lang = $cachedData['viv_lang'];
+        $this->alternate = $cachedData['alternate'];
+
+        return; 
+        }
+
         global $database;
 
         $statya = $this->statya;
@@ -521,6 +557,19 @@ public function getLang(){
         $this->statya_title = $res['m_name'];
         $this->statya_other_id = $res['m_id'];
         $this->page_img = 'https://autotalkz.com/img/main/m'.$res['m_id'].'.jpg';
+
+        $dataToCache = [
+        'text' => $this->text,
+        'cat_title' => $this->cat_title,
+        'statya_title' => $this->statya_title,
+        'statya_other_id' => $this->statya_other_id,
+        'page_img' => $this->page_img,
+        'viv_lang' => $this->viv_lang,
+        'alternate' => $this->alternate,
+        ];
+        $redis->set($redis_key, serialize($dataToCache));
+        // $redis->expire($redis_key, 86400);  // TTL на 24 часа
+
 
     }
 

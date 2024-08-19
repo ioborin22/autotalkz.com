@@ -3,43 +3,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
 <!-- Ad BEGIN -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9384619306632558"
-     crossorigin="anonymous"></script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9384619306632558"
+     crossorigin="anonymous"></script> -->
 <!-- Ad END -->
-</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SEVVRFEESC"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const trackingData = {
-            url: window.location.href,
-            referrer: document.referrer,
-            timestamp: new Date().toISOString(),
-            title: document.title,
-            screenResolution: `${window.screen.width}x${window.screen.height}`,
-            userAgent: navigator.userAgent,
-            language: navigator.language || navigator.userLanguage
-        };
-        fetch('https://autotalkz.com/track', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(trackingData)
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Tracking data sent successfully:', data);
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
-    });
-</script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-SEVVRFEESC');
+</script>
+</head>
 <body>
 <header itemscope itemtype="http://schema.org/WPHeader" id="header">
 	<div class="shapka">

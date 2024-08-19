@@ -159,12 +159,7 @@ document.addEventListener("DOMContentLoaded", function(){
         return "";
     }
 });
-</script>
 
-
-</body>
-</html>
-<script>
 document.addEventListener("copy", function(e) {
     const selection = window.getSelection().toString();
     const pagelink = `\n\nSource: https://autotalkz.com${window.location.pathname}\n`;
@@ -174,3 +169,5 @@ document.addEventListener("copy", function(e) {
     e.preventDefault();
 });
 </script>
+</body>
+</html>
