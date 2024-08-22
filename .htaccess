@@ -1,12 +1,7 @@
-#AddHandler application/x-httpd-php73 .php
-#AddHandler application/x-httpd-php .php .htm .html
-
-#php_value short_open_tag 1
-
-ErrorDocument 401 /
-ErrorDocument 403 /
+ErrorDocument 401 /401.php
+ErrorDocument 403 /403.php
 ErrorDocument 404 /404.php
-ErrorDocument 500 /
+ErrorDocument 500 /500.php
 
 Options +FollowSymLinks
 RewriteEngine on
@@ -46,12 +41,13 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !(.*)/$ 
 RewriteRule ^(.*)$ /$1/ [R=301,L]
 
-RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?google.com [NC]
-RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?bing.com [NC]
-RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?yahoo.com [NC]
-RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?autotalkz.com/ [NC]
-RewriteRule \.(jpg|jpeg|png|gif)$ – [NC,F,L]
+#Referrer-Based Image Access Restriction
+#RewriteCond %{HTTP_REFERER} !^$
+#RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?google.com [NC]
+#RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?bing.com [NC]
+#RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?yahoo.com [NC]
+#RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?autotalkz.com/ [NC]
+#RewriteRule \.(jpg|jpeg|png|gif)$ – [NC,F,L]
 
 
 RewriteRule ^about-us/?$ /pages/about-us.php [L]
