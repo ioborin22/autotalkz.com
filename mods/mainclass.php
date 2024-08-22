@@ -496,14 +496,14 @@ public function getLang(){
         $this->alternate = $alternate;
         $this->viv_lang = $langs;
 
-        $src = $_SERVER['DOCUMENT_ROOT'].'/img/main/m'.$res['m_id'].'.jpg';
+        $src = $_SERVER['DOCUMENT_ROOT'].'/img/main/m'.$res['m_id'].'.webp';
         $text = explode("\n",$res['t_text']);
 
         $imsize = getimagesize($src);
         if(file_exists($src)){
             $mytext[] = '<p class="cntr" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
-		    <img itemprop="url contentUrl" src="/img/main/m'.$res['m_id'].'.jpg" alt="Photo '.$res['m_name'].'"/>
-		    <link itemprop="url" href="https://autotalkz.com/img/main/m'.$res['m_id'].'.jpg">
+		    <img itemprop="url contentUrl" src="/img/main/m'.$res['m_id'].'.webp" alt="Photo '.$res['m_name'].'"/>
+		    <link itemprop="url" href="https://autotalkz.com/img/main/m'.$res['m_id'].'.webp">
 		    <meta itemprop="width" content="'.$imsize[0].'">
 		    <meta itemprop="height" content="'.$imsize[1].'">
 		   	</p>';
@@ -523,7 +523,7 @@ public function getLang(){
                     $imsize = getimagesize($_SERVER['DOCUMENT_ROOT'].'/img/all/'.$myimg);
                     $mytext[] = '<p class="cntr" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
 				    <img itemprop="url contentUrl" src="/img/all/'.$myimg.'" alt="Photo '.$res['m_name'].'"/>
-				    <link itemprop="url" href="https://autotalkz.com/img/main/m'.$res['m_id'].'.jpg">
+				    <link itemprop="url" href="https://autotalkz.com/img/main/m'.$res['m_id'].'.webp">
 				    <meta itemprop="width" content="'.$imsize[0].'">
 				    <meta itemprop="height" content="'.$imsize[1].'">
 				   	</p>';
@@ -556,7 +556,7 @@ public function getLang(){
         $this->cat_title = $res['m_cat_name'];
         $this->statya_title = $res['m_name'];
         $this->statya_other_id = $res['m_id'];
-        $this->page_img = 'https://autotalkz.com/img/main/m'.$res['m_id'].'.jpg';
+        $this->page_img = 'https://autotalkz.com/img/main/m'.$res['m_id'].'.webp';
 
         $dataToCache = [
         'text' => $this->text,
