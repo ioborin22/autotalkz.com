@@ -1,8 +1,11 @@
 <?php
 session_start();
 
-include_once $_SERVER['DOCUMENT_ROOT']."/admin/dbconnect.php";
-include_once $_SERVER['DOCUMENT_ROOT']."/mods/mainclass.php";
+// include_once $_SERVER['DOCUMENT_ROOT']."/admin/dbconnect.php";
+// include_once $_SERVER['DOCUMENT_ROOT']."/mods/mainclass.php";
+
+include_once '/var/www/html/autotalkz.com/admin/dbconnect.php';
+include_once '/var/www/html/autotalkz.com/admin/mainclass.php';
 
 if (isset($_GET['page'])) {
     $page = stripslashes(htmlspecialchars($_GET['page']));
